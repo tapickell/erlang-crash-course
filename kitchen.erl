@@ -15,6 +15,9 @@ fridge1() ->
 
 fridge2(FoodList) ->
   receive
+    {From, {peek}} ->
+      From ! {self(), FoodList},
+      fridge2(FoodList);
     {From, {store, Food}} ->
       From ! {self(), ok},
       fridge2([Food|FoodList]);
@@ -31,16 +34,28 @@ fridge2(FoodList) ->
       ok
   end.
 
+peek(Pid) ->
+  Pid ! {self(), {peek}},
+  receive
+    {Pid, Msg} -> Msg
+  after 3000 ->
+    timeout
+  end.
+
 store(Pid, Food) ->
   Pid ! {self(), {store, Food}},
   receive
     {Pid, Msg} -> Msg
+  after 3000 ->
+    timeout
   end.
 
 take(Pid, Food) ->
   Pid ! {self(), {take, Food}},
   receive
     {Pid, Msg} -> Msg
+  after 3000 ->
+    timeout
   end.
 
 start(FoodList) ->
