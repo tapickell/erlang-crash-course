@@ -8,7 +8,7 @@
 - [x] Chapter 7: Errors and Exceptions
 - [x] Chapter 8: Functionally Solving Problems
 - [x] Chapter 9: A Short Visit to Common Data Structures
-- [ ] Chapter 10: The Hitchhiker's Guide to Concurrency
+- [x] Chapter 10: The Hitchhiker's Guide to Concurrency
 - [ ] Chapter 11: More on Multiprocessing
 - [ ] Chapter 12: Errors and Processes
 - [ ] Chapter 13: Designing a Concurrent Application
